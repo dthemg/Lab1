@@ -4,12 +4,13 @@ clf
 
 fnum = 0;
 
-n       = 1000;
+n       = 500;
 A       = [1, -1.35, 0.43];
 sigma2  = 4;
 noise   = sqrt(sigma2) * randn(n + 100, 1);
 y       = filter(1, A, noise);
 y       = y(101:end);
+
 fnum = fnum + 1;
 figure(fnum)
 subplot(211)

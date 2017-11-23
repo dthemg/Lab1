@@ -1,4 +1,5 @@
 
+
 clearvars
 close all
 
@@ -72,29 +73,64 @@ na = 2;
 nc = 2;
 
 ar_model = arx(data, [1]);
-arma_model = armax(data, [2, 2]);
 
-% present(ar_model)
-% disp('%%%%%%%%%%%')
-% present(arma_model)
-
-disp('AR: ')
-ar_model.a
+disp('AR1 FPE: ')
 ar_model.Report.Fit.FPE
 
-disp('ARMA: ')
-arma_model.a
-arma_model.c
-arma_model.Report.Fit.FPE
+% ARMA(1,1)
+arma_11model = armax(data, [1, 1]);
 
+disp('ARMA(1,1) FPE: ')
+arma_11model.Report.Fit.FPE
 
-e_hat = filter( arma_model.a, arma_model.c, y1);
+e_hat = filter( arma_11model.a, arma_11model.c, y1);
 
 fnum = fnum + 1;
 figure(fnum)
 subplot(211)
 acf1 = acf(e_hat, cutoff, 0.05, true, 0, 0);
-title('ACF for residuals')
+title('ACF for residuals, ARMA(1,1)')
+subplot(212)
+pacf1 = pacf(e_hat, cutoff, 0.05, true, 0);
+title('PACF for residuals')
+fnum = fnum + 1;
+figure(fnum)
+normplot(e_hat)
+title('Normplot of residuals')
+
+% ARMA 22
+arma_22model = armax(data, [2, 2]);
+
+disp('ARMA(2,2) FPE: ')
+arma_22model.Report.Fit.FPE
+
+e_hat = filter( arma_22model.a, arma_22model.c, y1);
+
+fnum = fnum + 1;
+figure(fnum)
+subplot(211)
+acf1 = acf(e_hat, cutoff, 0.05, true, 0, 0);
+title('ACF for residuals, ARMA(2,2)')
+subplot(212)
+pacf1 = pacf(e_hat, cutoff, 0.05, true, 0);
+title('PACF for residuals')
+fnum = fnum + 1;
+figure(fnum)
+normplot(e_hat)
+
+% ARMA 33
+arma_33model = armax(data, [3, 3]);
+
+disp('ARMA(3,3) FPE: ')
+arma_33model.Report.Fit.FPE
+
+e_hat = filter( arma_33model.a, arma_33model.c, y1);
+
+fnum = fnum + 1;
+figure(fnum)
+subplot(211)
+acf1 = acf(e_hat, cutoff, 0.05, true, 0, 0);
+title('ACF for residuals, ARMA(3,3)')
 subplot(212)
 pacf1 = pacf(e_hat, cutoff, 0.05, true, 0);
 title('PACF for residuals')
@@ -107,6 +143,7 @@ title('Normplot of residuals')
 
 
 
+title('Normplot of residuals')
 
 
 
