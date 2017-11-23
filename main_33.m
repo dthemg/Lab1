@@ -2,6 +2,9 @@ clearvars
 close all
 clc
 
+disp("Hello")
+
+
 fnum = 0;
 load('data.dat')
 load('noise.dat')
