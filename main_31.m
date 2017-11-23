@@ -10,7 +10,7 @@ close all
 clc
 N = 1000;
 sigma2 = 1.5;
-cutoff = 20;
+cutoff = 50;
 
 A1 = [1, -1.79, 0.84];
 C1 = [1, -0.18, -0.11];
@@ -44,7 +44,7 @@ figure(fnum)
 pzmap(ARMA2)
 title('Pole-zero plot, ARMA 2')
 
-m = 20;
+m = 50;
 rtheo = kovarians(ARMA1.c, ARMA1.a, m);
 rest = covf(y1, m+1);
 fnum = fnum + 1;

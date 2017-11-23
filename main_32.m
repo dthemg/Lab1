@@ -4,7 +4,7 @@ clf
 
 fnum = 0;
 
-n       = 500;
+n       = 1000;
 A       = [1, -1.35, 0.43];
 sigma2  = 4;
 noise   = sqrt(sigma2) * randn(n + 100, 1);
