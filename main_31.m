@@ -67,8 +67,8 @@ fnum = fnum + 1;
 figure(fnum)
 normplot(y1)
 
-data = iddata(y1);
 
+data = iddata(y1);
 na = 2;
 nc = 2;
 
